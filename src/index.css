@@ -1,0 +1,17 @@
+/* uso de tailwind css */
+@import "tailwindcss";
+
+/* agregamos fuentes */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400 500 700;
+  font-display: swap;
+  src: url("../src/assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+    format("woff2");
+}
+
+/* variables  */
+@theme {
+  --font-montserrat: "Montserrat";
+}
