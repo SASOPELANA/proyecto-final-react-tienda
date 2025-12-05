@@ -1,4 +1,4 @@
-// src/components/Buscador.jsx
+// src/components/Search.jsx
 import { useSearch } from "../context/SearchContext.jsx";
 
 const Buscador = ({
@@ -9,7 +9,7 @@ const Buscador = ({
   const { busqueda, setBusqueda } = useSearch();
 
   return (
-    <div className={`buscador-nad ${className} flex justify-center m-8`}>
+    <div className={`buscador-nad ${className} flex justify-center m-6`}>
       {label && (
         <label className="buscador-label-nad mb-2 block ">{label}</label>
       )}

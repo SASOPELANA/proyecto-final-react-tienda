@@ -34,7 +34,7 @@ const Productos = () => {
     <section className="max-w-6xl mx-auto px-4 py-10">
       {toast && <ToastAlert message={toast} onClose={cerrarToast} />}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center text-gray-800">
-        Productos
+        Tienda de Productos
       </h1>
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredProducts.map((producto) => (
