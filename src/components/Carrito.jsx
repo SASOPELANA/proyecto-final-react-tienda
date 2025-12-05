@@ -22,14 +22,12 @@ const Carrito = ({ carrito = [], setCarrito }) => {
         ) : (
           <>
             <div className="flex flex-col gap-3 mb-6">
-              {carrito.map((item) => (
+              {carrito.map((item, index) => (
                 <div
-                  key={item.id}
+                  key={`${item.id}-${index}`}
                   className="flex justify-between items-center bg-gray-50 p-3 rounded-md shadow-sm hover:bg-gray-100 transition"
                 >
-                  <span className="font-medium text-gray-800">
-                    {item.title}
-                  </span>
+                  <span className="font-medium text-gray-800">{item.name}</span>
                   <span className="text-gray-600">
                     ${Number(item.price).toFixed(3)}
                   </span>

@@ -1,7 +1,7 @@
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import NumeroProducto from "../components/ProductosConIndice";
 
 const DetallesProductos = () => {
-  const { id } = useParams();
   const location = useLocation();
   const producto = location.state?.producto;
 
@@ -26,15 +26,15 @@ const DetallesProductos = () => {
       "
       >
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
-          Detalles del producto {id}
+          Detalles del producto # {<NumeroProducto id={producto.id} />}
         </h1>
         <img
           src={producto.image}
-          alt={producto.title}
+          alt={producto.name}
           className="w-64 h-64 object-contain rounded-lg border mb-6"
         />
         <h2 className="text-xl font-semibold text-gray-700 mb-2">
-          {producto.title}
+          {producto.name}
         </h2>
         <p className="text-gray-600 mb-4">
           <strong>Descripción:</strong> {producto.description}
@@ -42,8 +42,15 @@ const DetallesProductos = () => {
         <p className="text-xl font-bold text-gray-900 mb-2">
           Precio: ${producto.price}
         </p>
-        <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">
-          {producto.category}
+        <span className="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-4">
+          {producto.categories?.map((cat, index) => (
+            <span
+              key={index}
+              className="bg-gray-100 px-2 py-1 text-xs rounded-full"
+            >
+              {cat.trim()}
+            </span>
+          ))}
         </span>
         <Link to={`/`}>
           <button className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors">

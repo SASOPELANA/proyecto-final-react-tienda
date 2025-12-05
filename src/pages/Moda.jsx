@@ -1,38 +1,47 @@
 import { useState, useEffect } from "react";
 import Carrito from "../components/Carrito";
+import app from "../api/api";
+import ToastAlert from "../components/ToastAlert";
 
 const Moda = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [carrito, setCarrito] = useState([]);
-
-  const API = "https://fakestoreapi.com/products";
+  const [toast, setToas] = useState("");
 
   useEffect(() => {
-    fetch(API)
-      .then((res) => res.json())
-      .then((data) => {
-        // Filtrar solo productos de moda
-        const modaAll = data;
+    const fetchProductos = async () => {
+      try {
+        setLoading(true);
+        const res = await app.get("/products");
+        const data = res.data;
 
-        // Mezclar y tomar 3 productos al azar
-        const randomModa = modaAll
-          .sort(() => 0.4 - Math.random()) // mezcla el array
-          .slice(0, 4); // toma 5 aleatorios
+        const electronicsProducts = data.filter(
+          (product) =>
+            product.categories.includes("Gamer") ||
+            product.categories.includes("CPU"),
+        );
 
-        setProductos(randomModa);
-        setLoading(false);
-      })
-      .catch(() => {
+        setProductos(electronicsProducts);
+      } catch (err) {
         setError("No se pudieron cargar los productos 😭");
+        console.error(err);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchProductos();
   }, []);
 
   const agregarAlCarrito = (producto) => {
     setCarrito([...carrito, producto]);
-    alert(`${producto.title} agregado al carrito`);
+    setToas(`${producto.name} agregado al carrito`); // ← usa .name
+  };
+
+  const cerrarToast = () => {
+    setToas("");
   };
 
   if (loading) return <h2 className="text-center mt-10">Cargando...</h2>;
@@ -40,25 +49,38 @@ const Moda = () => {
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-10">
+      {toast && <ToastAlert message={toast} onClose={cerrarToast} />}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center text-gray-800">
-        Colección de Moda (Productos Random)
+        Moda - Gamers
       </h1>
 
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {productos.map((producto) => (
+        {productos.map((producto, index) => (
           <div
-            key={producto.id}
-            className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 flex flex-col"
+            key={`${producto.id}-${index}`}
+            className="bg-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 flex flex-col"
           >
             <img
               src={producto.image}
-              alt={producto.title}
+              alt={producto.name}
               className="w-full h-64 object-contain p-4"
             />
             <div className="p-4 flex flex-col flex-grow justify-between text-center">
               <h2 className="text-lg font-semibold text-gray-700 mb-2 line-clamp-2">
-                {producto.title}
+                {producto.name}
               </h2>
+
+              <p className="flex flex-wrap justify-center gap-2 mb-4">
+                {producto.categories?.map((cat, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-100 px-2 py-1 text-xs rounded-full"
+                  >
+                    {cat.trim()}
+                  </span>
+                ))}
+              </p>
+
               <p className="text-gray-900 font-bold text-xl mb-4">
                 ${producto.price}
               </p>
