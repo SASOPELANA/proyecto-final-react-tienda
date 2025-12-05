@@ -62,7 +62,7 @@ const Footer = () => {
               <li>
                 <a
                   className="text-gray-700 transition hover:text-gray-700/75"
-                  href="https://github.com/SASOPELANA/proyecto-react-tienda-pre-entrega"
+                  href="https://github.com/SASOPELANA/proyecto-final-react-tienda"
                   target="_blank"
                   rel="noreferrer"
                 >
