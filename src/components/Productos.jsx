@@ -1,36 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Carrito from "./Carrito";
-import app from "../api/api";
 import ToastAlert from "./ToastAlert";
-
-const myApisRest = app;
+import { useSearch } from "../context/SearchContext.jsx";
 
 const Productos = () => {
-  const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [carrito, setCarrito] = useState([]);
   const [toast, setToas] = useState("");
-
-  useEffect(() => {
-    const getProductos = async () => {
-      try {
-        setLoading(true);
-
-        const res = await myApisRest.get("/products");
-        setProductos(res.data);
-        setError(null);
-      } catch (error) {
-        setError("Hubo un error al cargar los productos");
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getProductos();
-  }, []);
+  const { filteredProducts, loadingFilter, errorFilter } = useSearch();
 
   const agregarAlCarrito = (producto) => {
     setCarrito([...carrito, producto]);
@@ -41,12 +18,16 @@ const Productos = () => {
     setToas("");
   };
 
-  if (loading) {
+  if (loadingFilter) {
     return <h2 className="text-center mt-10">Cargando...</h2>;
   }
 
-  if (error) {
-    return <h2 className="text-center mt-10 text-red-500">{error}</h2>;
+  if (errorFilter) {
+    return <h2 className="text-center mt-10 text-red-500">{errorFilter}</h2>;
+  }
+
+  if (filteredProducts.length === 0) {
+    return <p className="text-center">No se encontraron productos.</p>;
   }
 
   return (
@@ -56,7 +37,7 @@ const Productos = () => {
         Productos
       </h1>
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {productos.map((producto) => (
+        {filteredProducts.map((producto) => (
           <div
             key={producto.id}
             className="bg-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 flex flex-col"

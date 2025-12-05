@@ -1,11 +1,13 @@
-import Carrito from "../components/Carrito";
-import Productos from "../components/Productos";
+import Productos from "../components/Productos.jsx";
+import { SearchProvider } from "../context/SearchContext";
+import Search from "../components/Search";
 
 const Inicio = () => {
   return (
-    <div>
+    <SearchProvider>
+      <Search />
       <Productos />
-    </div>
+    </SearchProvider>
   );
 };
 
