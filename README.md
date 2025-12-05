@@ -8,7 +8,7 @@ Pre-Entrega del proyecto, curso de React, brindado por Talento Tech - Agencia de
 
 1. Clonar el repositorio
 
-- git clone https://github.com/SASOPELANA/proyecto-react-tienda-pre-entrega
+- git clone https://github.com/SASOPELANA/proyecto-final-react-tienda.git
 
 2. Instalar las dependencias
 
@@ -20,7 +20,7 @@ Pre-Entrega del proyecto, curso de React, brindado por Talento Tech - Agencia de
 
 ## Enlace al Proyecto
 
-- https://proyecto-pre-entrega-tienda-react.netlify.app/
+- https://proyecto-final-react-tienda.vercel.app/
 
 ## Herramientas usadas
 
