@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Carrito from "./Carrito";
 import ToastAlert from "./ToastAlert";
 import { useSearch } from "../context/SearchContext.jsx";
+import Spinner from "../assets/icons/Spinner.jsx";
 
 const Productos = () => {
   const [carrito, setCarrito] = useState([]);
@@ -19,7 +20,11 @@ const Productos = () => {
   };
 
   if (loadingFilter) {
-    return <h2 className="text-center mt-10">Cargando...</h2>;
+    return (
+      <h2 className="text-center mt-10">
+        <Spinner />{" "}
+      </h2>
+    );
   }
 
   if (errorFilter) {

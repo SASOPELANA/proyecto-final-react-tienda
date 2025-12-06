@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Carrito from "../components/Carrito";
 import app from "../api/api";
 import ToastAlert from "../components/ToastAlert";
+import Spinner from "../assets/icons/Spinner";
 
 const Moda = () => {
   const [productos, setProductos] = useState([]);
@@ -44,7 +45,12 @@ const Moda = () => {
     setToas("");
   };
 
-  if (loading) return <h2 className="text-center mt-10">Cargando...</h2>;
+  if (loading)
+    return (
+      <h2 className="text-center mt-10">
+        <Spinner />
+      </h2>
+    );
   if (error) return <h2 className="text-center mt-10 text-red-500">{error}</h2>;
 
   return (

@@ -5,6 +5,7 @@ import Moda from "./pages/Moda";
 import About from "./pages/About.jsx";
 import Contacto from "./pages/Contacto.jsx";
 import Mapa from "./pages/Mapa.jsx";
+import Error404 from "./components/Error404.jsx";
 import ProductoDetalles from "./pages/DetallesProductos.jsx";
 import { Route, Routes } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/about" element={<About />} />
         <Route path="/detalle/:id" element={<ProductoDetalles />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
     </main>
