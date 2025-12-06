@@ -10,7 +10,7 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <main className="font-montserrat">
+    <main className="font-montserrat pt-[80px]">
       <Header />
       <Routes>
         <Route path="/mapa" element={<Mapa />} />

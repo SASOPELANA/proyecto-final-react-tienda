@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import "../styles/leaflet-fix.css";
 import L from "leaflet";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import iconUrl from "leaflet/dist/images/marker-icon.png";
@@ -22,12 +23,15 @@ const Mapa = () => {
       <h1 className="flex justify-center my-8 font-bold text-3xl text-pretty text-gray-800 max-sm:text-xl">
         Lugar Random Tienda
       </h1>
+      <h2 className="flex justify-center my-8 font-bold text-4xl text-pretty text-gray-800 max-sm:text-xl">
+        Podes encontrarnos aqui:
+      </h2>
       <div className="mx-32 mt-16 -z-auto max-sm:mx-4 border border-amber-200 rounded-lg">
         <MapContainer
           center={position}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ height: "100vh", width: "100%" }}
+          style={{ height: "70vh", width: "100%" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

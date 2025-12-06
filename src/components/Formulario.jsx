@@ -63,7 +63,7 @@ const Formulario = () => {
 
         <button
           type="submit"
-          className="w-full text-black bg-white/90 hover:bg-yellow-500/80 hover:scale-105 transition focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center"
+          className="w-full text-black bg-white/90 hover:bg-yellow-500/80 hover:scale-105 transition focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer"
         >
           Enviar
         </button>

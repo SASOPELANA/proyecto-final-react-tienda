@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogoLugar from "../../public/lugar-tienda-random.png";
 
+{
+  /* Cerrar la MENU HAMBURGUESA luego de 5 segundos de hacer click */
+}
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      const timer = setTimeout(() => {
+        setOpen(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [open]);
 
   return (
     <header className="bg-gray-300 relative z-50">
@@ -21,7 +34,7 @@ const NavBar = () => {
                 <Link to="/">Inicio</Link>
               </li>
               <li>
-                <Link to="/moda">Moda</Link>
+                <Link to="/moda">Gamers</Link>
               </li>
               <li>
                 <Link to="/contacto">Contacto</Link>
@@ -89,7 +102,7 @@ const NavBar = () => {
             </li>
             <li>
               <Link to="/moda" onClick={() => setOpen(false)}>
-                Moda
+                Gamers
               </Link>
             </li>
             <li>

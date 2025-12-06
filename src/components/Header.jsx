@@ -1,12 +1,10 @@
 import NavBar from "./NavBar";
-import CarritoIcon from "../assets/icons/CarritoIcon.jsx";
-import StoreIcon from "../assets/icons/StoreIcon.jsx";
 
 const Header = () => {
   return (
-    <div>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow">
       <NavBar />
-    </div>
+    </header>
   );
 };
 
