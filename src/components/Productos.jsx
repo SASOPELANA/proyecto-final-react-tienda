@@ -31,7 +31,7 @@ const Productos = () => {
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-10">
+    <section className="max-w-6xl mx-auto px-4 py-10 animate-flip-up animate-duration-1000 animate-delay-500 animate-ease-out">
       {toast && <ToastAlert message={toast} onClose={cerrarToast} />}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center text-gray-800">
         Tienda de Productos
@@ -45,7 +45,7 @@ const Productos = () => {
             <img
               src={producto.image}
               alt={producto.name}
-              className="w-full h-64 object-contain p-4"
+              className="w-full h-64 object-contain p-4 animate-flip-down animate-once animate-duration-[3000ms] animate-delay-500"
             />
             <div className="p-4 flex flex-col flex-grow justify-between text-center">
               <h3 className="font-bold text-lg text-gray-800">

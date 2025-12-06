@@ -1,5 +1,6 @@
 /* uso de tailwind css */
 @import "tailwindcss";
+@import "tailwindcss-animated";
 
 /* agregamos fuentes */
 @font-face {

@@ -1,6 +1,6 @@
 const Formulario = () => {
   return (
-    <div>
+    <div className="mx-2">
       <form
         className="max-w-md mx-auto my-20 p-6 bg-gray-300/85 rounded-lg shadow-md border border-green-500/50"
         action="https://formsubmit.co/sopekof@gmail.com"

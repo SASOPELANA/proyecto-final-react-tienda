@@ -19,7 +19,7 @@ const Mapa = () => {
   const position = [-34.5955199, -58.375556];
 
   return (
-    <div>
+    <div className="animate-flip-up animate-duration-1000 animate-delay-500 animate-ease-out">
       <h1 className="flex justify-center my-8 font-bold text-3xl text-pretty text-gray-800 max-sm:text-xl">
         Lugar Random Tienda
       </h1>

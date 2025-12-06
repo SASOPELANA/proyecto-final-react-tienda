@@ -10,7 +10,7 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <main className="font-montserrat pt-[80px]">
+    <main className="font-montserrat pt-[80px] animate-pulse animate-once animate-duration-[1000ms] animate-delay-500 ">
       <Header />
       <Routes>
         <Route path="/mapa" element={<Mapa />} />
