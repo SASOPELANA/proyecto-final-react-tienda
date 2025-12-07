@@ -58,13 +58,13 @@ const NavBar = () => {
                 className="bg-green-400 text-gray-200 px-5 py-2.5 rounded-md cursor-pointer"
                 to="/login"
               >
-                Login
+                Iniciar Sesión
               </Link>
               <Link
                 className="bg-gray-100 text-green-400 px-5 py-2.5 rounded-md cursor-pointer"
                 to="/register"
               >
-                Register
+                Registrarse
               </Link>
             </div>
 
@@ -130,12 +130,12 @@ const NavBar = () => {
 
             <li>
               <Link to="/login" onClick={() => setOpen(false)}>
-                Login
+                Iniciar Sesión
               </Link>
             </li>
             <li>
               <Link to="/register" onClick={() => setOpen(false)}>
-                Register
+                Registrarse
               </Link>
             </li>
           </ul>
