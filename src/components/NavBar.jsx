@@ -43,7 +43,7 @@ const NavBar = () => {
                 <Link to="/about">Nosotros</Link>
               </li>
               <li>
-                <Link to="/projects">Projects</Link>
+                <Link to="/review">Reseñas</Link>
               </li>
               <li>
                 <Link to="/blog">Blog</Link>
@@ -116,8 +116,8 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/projects" onClick={() => setOpen(false)}>
-                Projects
+              <Link to="/review" onClick={() => setOpen(false)}>
+                Reseñas
               </Link>
             </li>
             <li>
