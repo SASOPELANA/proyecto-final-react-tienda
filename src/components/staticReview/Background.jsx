@@ -8,7 +8,7 @@ import bgDestok from "../../assets/destok.svg";
 
 export const Background = () => {
   return (
-    <div>
+    <div className="mb-12">
       <picture className="absolute top-0 left-0 -z-10">
         <source media="(max-width: 375px)" srcSet={bgTopMobile} />
         <source media="(min-width: 376px)" srcSet={bgTopDestok} />

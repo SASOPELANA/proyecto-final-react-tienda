@@ -4,7 +4,7 @@ export const Hero = () => {
 
     <section className="mb-10 xl:flex-1">
       <h1
-        className="text-gray-700 text-[2.5rem] leading-8 font-bold
+        className="text-gray-900 text-[2.5rem] leading-8 font-bold
         px-8 text-center mb-4 mt-6 xl:text-pretty xl:w-[445px] xl:text-[3.5rem]/[3rem] 
         xl:p-0 
         "
@@ -12,7 +12,7 @@ export const Hero = () => {
         Mas de 10,000 usuarios calificaron nuestros productos.
       </h1>
       <p
-        className="text-gray-700 text-center font-medium text-[17.5px] 
+        className="text-gray-800 text-center font-medium text-[17.5px] 
         leading-[1.5625rem] xl:text-[1.0625rem] xl:w-[445px]
         "
       >

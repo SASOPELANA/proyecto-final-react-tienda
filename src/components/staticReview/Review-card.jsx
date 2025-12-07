@@ -1,7 +1,7 @@
 export const ReviewCard = ({ name, imgUrl, buyerType, review, className }) => {
   return (
     <div
-      className={`bg-gray-600 rounded-lg text-gray-200 px-8 pt-10 pb-8
+      className={`bg-indigo-400 rounded-lg text-gray-100 px-8 pt-10 pb-8
         xl:w-[350px] xl:h-[234px] ${className}`}
     >
       <div className="flex gap-6 mb-6">
@@ -9,11 +9,11 @@ export const ReviewCard = ({ name, imgUrl, buyerType, review, className }) => {
 
         <div className="text-[1.0625rem] leading-[1.2rem]">
           <p className="font-bold">{name}</p>
-          <p className="text-amber-300">{buyerType}</p>
+          <p className="text-black">{buyerType}</p>
         </div>
       </div>
 
-      <p className="font-medium text-pretty xl:text-[15px]">{review}</p>
+      <p className="font-bold text-pretty xl:text-[15px]">{review}</p>
     </div>
   );
 };

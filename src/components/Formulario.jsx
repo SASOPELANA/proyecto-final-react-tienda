@@ -2,7 +2,7 @@ const Formulario = () => {
   return (
     <div className="mx-2">
       <form
-        className="max-w-md mx-auto my-20 p-6 bg-gray-300/85 rounded-lg shadow-md border border-green-500/50"
+        className="max-w-md mx-auto my-20 p-6 bg-gray-300/85 rounded-lg shadow-md border-3 border-indigo-200"
         action="https://formsubmit.co/sopekof@gmail.com"
         method="POST"
       >
@@ -19,7 +19,7 @@ const Formulario = () => {
             type="text"
             id="name"
             name="name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black block w-full p-2.5"
+            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 block w-full p-2.5"
             placeholder="Nombre y Apellido"
             required
           />
@@ -36,7 +36,7 @@ const Formulario = () => {
             type="email"
             id="email"
             name="email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-black block invalid:focus:ring-red-500 w-full p-2.5  peer"
+            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 block invalid:focus:ring-red-500 w-full p-2.5  peer"
             placeholder="nombre@company.com"
             required
           />
@@ -56,14 +56,14 @@ const Formulario = () => {
             id="message"
             name="message"
             rows="4"
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300"
             placeholder="Ingrese su mensaje..."
           ></textarea>
         </div>
 
         <button
           type="submit"
-          className="w-full text-black bg-white/90 hover:bg-yellow-500/80 hover:scale-105 transition focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer"
+          className="w-full text-black bg-indigo-400 hover:bg-indigo-300 hover:scale-105 transition focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer"
         >
           Enviar
         </button>

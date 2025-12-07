@@ -5,7 +5,7 @@ const About = () => {
     <div className="mx-2 ">
       <div
         className="max-w-3xl mx-auto mt-16 md:px-8 p-6 my-16 bg-white rounded-xl shadow-md sm:p-8 md:p-12
-    border-4 border-gray-500/50 animate-jump-in animate-once animate-duration-1000 animate-delay-100
+    border-4 border-indigo-200 animate-jump-in animate-once animate-duration-1000 animate-delay-100
     "
       >
         <h1 className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-800 text-center sm:text-left">
@@ -29,7 +29,7 @@ const About = () => {
           mejorando y creciendo junto a nuestra comunidad de clientes.
         </p>
         <Link to="/">
-          <button className="mt-4 bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 cursor-pointer transition-colors  ">
+          <button className="mt-4 bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-300 cursor-pointer transition-colors  ">
             Volver
           </button>
         </Link>

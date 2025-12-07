@@ -1,11 +1,11 @@
 import Productos from "../components/Productos.jsx";
 import { SearchProvider } from "../context/SearchContext";
-import Search from "../components/Search";
+import Buscador from "../components/Search";
 
 const Inicio = () => {
   return (
     <SearchProvider>
-      <Search />
+      <Buscador />
       <Productos />
     </SearchProvider>
   );

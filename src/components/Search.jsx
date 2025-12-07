@@ -19,7 +19,7 @@ const Buscador = ({
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
         placeholder={placeholder}
-        className="border p-2 rounded w-full max-w-md sm:max-w-lg mx-auto my-4 "
+        className="border border-indigo-500 p-2 rounded w-full max-w-md sm:max-w-lg mx-auto my-4 "
       />
     </div>
   );
