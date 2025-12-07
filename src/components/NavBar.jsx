@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogoLugar from "../../public/lugar-tienda-random.png";
+import { FaBars, FaShoppingCart } from "react-icons/fa";
+import { useCart } from "../context/CartContext.jsx";
 
-{
-  /* Cerrar la MENU HAMBURGUESA luego de 5 segundos de hacer click */
-}
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const { cart } = useCart();
 
   useEffect(() => {
     if (open) {
@@ -22,7 +22,11 @@ const NavBar = () => {
     <header className="bg-gray-300 relative z-50">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         {/* LOGO */}
-        <Link to="mapa">
+        <Link
+          to="mapa"
+          className="flex items-center gap-2"
+          aria-label="Ver mapa de la tienda"
+        >
           <img src={LogoLugar} alt="logo" className="size-10" />
         </Link>
 
@@ -46,7 +50,18 @@ const NavBar = () => {
                 <Link to="/review">Reseñas</Link>
               </li>
               <li>
-                <Link to="/blog">Blog</Link>
+                <Link
+                  to="/carrito"
+                  className="relative"
+                  aria-label={`Ver carrito de compras con ${cart.length} artículos`}
+                >
+                  <FaShoppingCart className="text-2xl" />
+                  {cart.length > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                      {cart.length}
+                    </span>
+                  )}
+                </Link>
               </li>
             </ul>
           </nav>
@@ -72,20 +87,10 @@ const NavBar = () => {
             <button
               onClick={() => setOpen(!open)}
               className="md:hidden block rounded-sm bg-green-400/80 p-2.5 text-gray-200"
+              aria-label="Abrir menú de navegación"
+              aria-expanded={open}
             >
-              <svg
-                className="size-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              <FaBars className="size-5" />
             </button>
           </div>
         </div>
@@ -93,7 +98,10 @@ const NavBar = () => {
 
       {/* MENU MOBILE */}
       {open && (
-        <nav className="md:hidden bg-gray-300 shadow-lg absolute left-0 w-full px-6 py-4 animate-fadeIn">
+        <nav
+          className="md:hidden bg-gray-300 shadow-lg absolute left-0 w-full px-6 py-4 animate-fadeIn"
+          aria-label="Navegación móvil"
+        >
           <ul className="flex flex-col gap-4 text-gray-700 font-semibold">
             <li>
               <Link to="/" onClick={() => setOpen(false)}>
@@ -121,8 +129,18 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/blog" onClick={() => setOpen(false)}>
-                Blog
+              <Link
+                to="/carrito"
+                onClick={() => setOpen(false)}
+                className="relative"
+                aria-label={`Ver carrito de compras con ${cart.length} artículos`}
+              >
+                <FaShoppingCart className="text-2xl" />
+                {cart.length > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                    {cart.length}
+                  </span>
+                )}
               </Link>
             </li>
 

@@ -1,10 +1,17 @@
+import { toast } from "react-toastify";
+
 const Formulario = () => {
+  const handleSubmit = (e) => {
+    toast.success("Formulario enviado con éxito");
+  };
+
   return (
     <div className="mx-2">
       <form
         className="max-w-md mx-auto my-20 p-6 bg-gray-300/85 rounded-lg shadow-md border-3 border-indigo-200"
         action="https://formsubmit.co/sopekof@gmail.com"
         method="POST"
+        onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Contacto</h2>
 

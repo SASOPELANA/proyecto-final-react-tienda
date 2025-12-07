@@ -1,23 +1,12 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import Carrito from "./Carrito";
-import ToastAlert from "./ToastAlert";
 import { useSearch } from "../context/SearchContext.jsx";
+import { useCart } from "../context/CartContext.jsx";
 import Spinner from "../assets/icons/Spinner.jsx";
+import { FaCartPlus, FaInfoCircle } from "react-icons/fa";
 
 const Productos = () => {
-  const [carrito, setCarrito] = useState([]);
-  const [toast, setToas] = useState("");
   const { filteredProducts, loadingFilter, errorFilter } = useSearch();
-
-  const agregarAlCarrito = (producto) => {
-    setCarrito([...carrito, producto]);
-    setToas(`${producto.name} agregado al carrito`);
-  };
-
-  const cerrarToast = () => {
-    setToas("");
-  };
+  const { addToCart } = useCart();
 
   if (loadingFilter) {
     return (
@@ -37,7 +26,6 @@ const Productos = () => {
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-10 animate-flip-up animate-duration-1000 animate-delay-500 animate-ease-out">
-      {toast && <ToastAlert message={toast} onClose={cerrarToast} />}
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center text-gray-800">
         Tienda de Productos
       </h1>
@@ -74,27 +62,28 @@ const Productos = () => {
               </p>
               <div className="flex flex-col gap-2">
                 <button
-                  onClick={() => agregarAlCarrito(producto)}
-                  className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors"
+                  onClick={() => addToCart(producto)}
+                  className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
                   aria-label={`Agregar ${producto.name} al carrito`}
                 >
-                  Agregar al carrito
+                  <FaCartPlus /> Agregar al carrito
                 </button>
                 <Link
                   to={`/detalle/${producto.id}`}
                   state={{ producto }}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors"
+                  className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+                  aria-label={`Ver detalles de ${producto.name}`}
                 >
-                  Detalles
+                  <FaInfoCircle /> Detalles
                 </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <Carrito carrito={carrito} setCarrito={setCarrito} />
     </section>
   );
 };
 
 export default Productos;
+

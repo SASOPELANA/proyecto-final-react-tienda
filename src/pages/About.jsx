@@ -1,41 +1,53 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const About = () => {
   return (
-    <div className="mx-2 ">
-      <div
-        className="max-w-3xl mx-auto mt-16 md:px-8 p-6 my-16 bg-white rounded-xl shadow-md sm:p-8 md:p-12
+    <>
+      <Helmet>
+        <title>Sobre Nosotros - Mi Tienda</title>
+        <meta
+          name="description"
+          content="Conoce más sobre nuestra tienda, nuestra misión y el equipo que la hace posible."
+        />
+      </Helmet>
+      <div className="mx-2 ">
+        <div
+          className="max-w-3xl mx-auto mt-16 md:px-8 p-6 my-16 bg-white rounded-xl shadow-md sm:p-8 md:p-12
     border-4 border-indigo-200 animate-jump-in animate-once animate-duration-1000 animate-delay-100
     "
-      >
-        <h1 className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-800 text-center sm:text-left">
-          Sobre Nosotros
-        </h1>
+        >
+          <h1 className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-800 text-center sm:text-left">
+            Sobre Nosotros
+          </h1>
 
-        <p className="text-gray-700 mb-4 text-base text-pretty sm:text-lg md:text-xl">
-          Somos una tienda dedicada a ofrecer productos de alta calidad para
-          todos nuestros clientes. Nuestro objetivo es brindar la mejor
-          experiencia de compra en línea.
-        </p>
+          <p className="text-gray-700 mb-4 text-base text-pretty sm:text-lg md:text-xl">
+            Somos una tienda dedicada a ofrecer productos de alta calidad para
+            todos nuestros clientes. Nuestro objetivo es brindar la mejor
+            experiencia de compra en línea.
+          </p>
 
-        <p className="text-gray-700 mb-4 text-base text-pretty sm:text-lg md:text-xl">
-          Cada producto es cuidadosamente seleccionado y probado para asegurar
-          que cumpla con nuestros estándares de excelencia. Nos apasiona
-          satisfacer a nuestros clientes y hacer que cada compra sea única.
-        </p>
+          <p className="text-gray-700 mb-4 text-base text-pretty sm:text-lg md:text-xl">
+            Cada producto es cuidadosamente seleccionado y probado para asegurar
+            que cumpla con nuestros estándares de excelencia. Nos apasiona
+            satisfacer a nuestros clientes y hacer que cada compra sea única.
+          </p>
 
-        <p className="text-gray-700 text-base text-pretty sm:text-lg md:text-xl">
-          ¡Gracias por confiar en nosotros! Estamos comprometidos a seguir
-          mejorando y creciendo junto a nuestra comunidad de clientes.
-        </p>
-        <Link to="/">
-          <button className="mt-4 bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-300 cursor-pointer transition-colors  ">
-            Volver
-          </button>
-        </Link>
+          <p className="text-gray-700 text-base text-pretty sm:text-lg md:text-xl">
+            ¡Gracias por confiar en nosotros! Estamos comprometidos a seguir
+            mejorando y creciendo junto a nuestra comunidad de clientes.
+          </p>
+          <Link to="/">
+            <button className="mt-4 bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-300 cursor-pointer transition-colors flex items-center gap-2">
+              <FaArrowLeft /> Volver
+            </button>
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default About;
+

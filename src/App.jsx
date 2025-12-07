@@ -10,11 +10,14 @@ import Review from "./pages/Review.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import ProductoDetalles from "./pages/DetallesProductos.jsx";
+import Carrito from "./pages/Carrito.jsx";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <main className="font-montserrat pt-[64px] animate-pulse animate-once animate-duration-[1000ms] animate-delay-500 ">
+    <main className="font-montserrat pt-[64px] animate-pulse animate-once animate-duration-[1000ms] animate-delay-500">
       <Header />
       <Routes>
         <Route path="/mapa" element={<Mapa />} />
@@ -24,11 +27,13 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/detalle/:id" element={<ProductoDetalles />} />
         <Route path="/review" element={<Review />} />
+        <Route path="/carrito" element={<Carrito />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </main>
   );
 }

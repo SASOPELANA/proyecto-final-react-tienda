@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import app from "../api/api";
+import { toast } from "react-toastify";
 
 const SearchContext = createContext();
 
@@ -30,7 +31,7 @@ export const SearchProvider = ({ children }) => {
           setFilteredProducts(allProducts); // Show all products if search is empty
         }
       } catch (err) {
-        console.error("Error fetching products:", err);
+        toast.error("Hubo un error al buscar los productos.");
         setErrorFilter("Hubo un error al buscar los productos.");
         setFilteredProducts([]);
       } finally {
