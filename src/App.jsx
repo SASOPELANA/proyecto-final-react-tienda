@@ -11,6 +11,8 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import ProductoDetalles from "./pages/DetallesProductos.jsx";
 import Carrito from "./pages/Carrito.jsx";
+import Admin from "./pages/Admin.jsx";
+import AdminProductForm from "./components/AdminProductForm.jsx";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -30,6 +32,9 @@ function App() {
         <Route path="/review" element={<Review />} />
         <Route element={<RutasProtegidas />}>
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/new" element={<AdminProductForm />} />
+          <Route path="/admin/edit/:id" element={<AdminProductForm />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

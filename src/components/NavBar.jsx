@@ -90,13 +90,21 @@ const NavBar = () => {
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex sm:gap-4 font-semibold">
               {isAuthenticated ? (
-                <button
-                  onClick={handleLogout}
-                  className="bg-red-400 text-gray-200 px-5 py-2.5 rounded-md cursor-pointer"
-                  aria-label="Cerrar sesión"
-                >
-                  Cerrar Sesión
-                </button>
+                <>
+                  <Link
+                    to="/admin"
+                    className="bg-red-600 text-white px-5 py-2.5 rounded-md cursor-pointer hover:bg-red-700 transition-colors"
+                  >
+                    Admin
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-400 text-gray-200 px-5 py-2.5 rounded-md cursor-pointer hover:bg-red-500 transition-colors"
+                    aria-label="Cerrar sesión"
+                  >
+                    Cerrar Sesión
+                  </button>
+                </>
               ) : (
                 <>
                   <Link
@@ -179,15 +187,26 @@ const NavBar = () => {
             <hr />
 
             {isAuthenticated ? (
-              <li>
-                <button
-                  onClick={handleLogout}
-                  className="text-left"
-                  aria-label="Cerrar sesión"
-                >
-                  Cerrar Sesión
-                </button>
-              </li>
+              <>
+                <li>
+                  <Link
+                    to="/admin"
+                    onClick={() => setOpen(false)}
+                    className="text-left text-red-600 font-bold"
+                  >
+                    Administración
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="text-left"
+                    aria-label="Cerrar sesión"
+                  >
+                    Cerrar Sesión
+                  </button>
+                </li>
+              </>
             ) : (
               <>
                 <li>
