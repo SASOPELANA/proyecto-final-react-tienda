@@ -1,12 +1,31 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoLugar from "../../public/lugar-tienda-random.png";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../context/CartContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
+import CerrarSession from "./CerrarSession.jsx";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const { cart } = useCart();
+    const { isAuthenticated, logout } = useAuth();
+    const navigate = useNavigate();
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const handleLogout = () => {
+    setConfirmOpen(true);
+  };
+
+  const confirmLogout = () => {
+    logout();
+    setOpen(false);
+    setConfirmOpen(false);
+    navigate("/");
+  };
+
+  const cancelLogout = () => {
+    setConfirmOpen(false);
+  };
 
   useEffect(() => {
     if (open) {
@@ -19,7 +38,8 @@ const NavBar = () => {
   }, [open]);
 
   return (
-    <header className="bg-gray-300 relative z-50">
+    <>
+      <header className="bg-gray-300 relative z-50">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         {/* LOGO */}
         <Link
@@ -69,18 +89,30 @@ const NavBar = () => {
           {/* BOTONES DERECHA */}
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex sm:gap-4 font-semibold">
-              <Link
-                className="bg-green-400 text-gray-200 px-5 py-2.5 rounded-md cursor-pointer"
-                to="/login"
-              >
-                Iniciar Sesión
-              </Link>
-              <Link
-                className="bg-gray-100 text-green-400 px-5 py-2.5 rounded-md cursor-pointer"
-                to="/register"
-              >
-                Registrarse
-              </Link>
+              {isAuthenticated ? (
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-400 text-gray-200 px-5 py-2.5 rounded-md cursor-pointer"
+                  aria-label="Cerrar sesión"
+                >
+                  Cerrar Sesión
+                </button>
+              ) : (
+                <>
+                  <Link
+                    className="bg-green-400 text-gray-200 px-5 py-2.5 rounded-md cursor-pointer"
+                    to="/login"
+                  >
+                    Iniciar Sesión
+                  </Link>
+                  <Link
+                    className="bg-gray-100 text-green-400 px-5 py-2.5 rounded-md cursor-pointer"
+                    to="/register"
+                  >
+                    Registrarse
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* BOTÓN HAMBURGUESA */}
@@ -146,20 +178,42 @@ const NavBar = () => {
 
             <hr />
 
-            <li>
-              <Link to="/login" onClick={() => setOpen(false)}>
-                Iniciar Sesión
-              </Link>
-            </li>
-            <li>
-              <Link to="/register" onClick={() => setOpen(false)}>
-                Registrarse
-              </Link>
-            </li>
+            {isAuthenticated ? (
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="text-left"
+                  aria-label="Cerrar sesión"
+                >
+                  Cerrar Sesión
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login" onClick={() => setOpen(false)}>
+                    Iniciar Sesión
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register" onClick={() => setOpen(false)}>
+                    Registrarse
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       )}
-    </header>
+      </header>
+      <CerrarSession
+        open={confirmOpen}
+        title={"Confirmar cierre de sesión"}
+        message={"¿Seguro que deseas cerrar sesión?"}
+        onConfirm={confirmLogout}
+        onCancel={cancelLogout}
+      />
+    </>
   );
 };
 

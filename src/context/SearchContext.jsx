@@ -30,9 +30,10 @@ export const SearchProvider = ({ children }) => {
         } else {
           setFilteredProducts(allProducts); // Show all products if search is empty
         }
-      } catch (err) {
+      } catch (error) {
         toast.error("Hubo un error al buscar los productos.");
         setErrorFilter("Hubo un error al buscar los productos.");
+        console.error(error);
         setFilteredProducts([]);
       } finally {
         setLoadingFilter(false);

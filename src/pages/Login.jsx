@@ -1,11 +1,30 @@
 import { Helmet } from "react-helmet-async";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const handleLogin = (e) => {
+  const { login, loading } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [formError, setFormError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    toast.success("Has iniciado sesión con éxito");
+    setFormError("");
+    try {
+      await login(email, password);
+      toast.success("Has iniciado sesión con éxito");
+      navigate("/");
+    } catch (err) {
+      const errorMsg = err.response?.data?.message || "Error al iniciar sesión";
+      setFormError(errorMsg);
+      toast.error(errorMsg);
+      console.error(err);
+    }
   };
 
   return (
@@ -47,6 +66,9 @@ const Login = () => {
                             type="email"
                             name="email"
                             placeholder="correo@ejemplo.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            disabled={loading}
                             required
                           />
                         </div>
@@ -70,6 +92,9 @@ const Login = () => {
                             type="password"
                             placeholder="contraseña"
                             name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            disabled={loading}
                             required
                           />
                         </div>
@@ -81,14 +106,16 @@ const Login = () => {
                     <div className="flex flex-col gap-2">
                       <button
                         type="submit"
+                        disabled={loading}
                         className="border transition-colors focus:ring-2 p-0.5 disabled:cursor-not-allowed border-transparent bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white disabled:bg-gray-300 disabled:text-gray-700 rounded-lg "
                       >
                         <span className="flex items-center justify-center gap-1 font-medium py-1 px-2.5 text-base false cursor-pointer">
-                          Iniciar Sesión
+                          {loading ? "Cargando..." : "Iniciar Sesión"}
                         </span>
                       </button>
                       <button
                         type="button"
+                        disabled={loading}
                         className="transition-colors focus:ring-2 p-0.5 disabled:cursor-not-allowed bg-white hover:bg-gray-100 text-gray-900 border border-gray-200 disabled:bg-gray-300 disabled:text-gray-700 rounded-lg "
                       >
                         <span className="flex items-center justify-center gap-2 font-medium py-1 px-2.5 text-base false">
@@ -98,6 +125,7 @@ const Login = () => {
                       </button>
                       <button
                         type="button"
+                        disabled={loading}
                         className="transition-colors focus:ring-2 p-0.5 disabled:cursor-not-allowed bg-white hover:bg-gray-100 text-gray-900 border border-gray-200 disabled:bg-gray-300 disabled:text-gray-700 rounded-lg "
                       >
                         <span className="flex items-center justify-center gap-2 font-medium py-1 px-2.5 text-base false">
@@ -107,15 +135,20 @@ const Login = () => {
                       </button>
                     </div>
                   </form>
+                  {formError && (
+                    <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                      {formError}
+                    </div>
+                  )}
                   <div className="min-w-[270px]">
                     <div className="mt-4 text-center">
                       ¿Nuevo usuario?
-                      <a
+                      <Link
                         className="text-blue-500 underline hover:text-blue-600"
-                        href="/register"
+                        to="/register"
                       >
-                        Crea una cuenta aqui
-                      </a>
+                        {" "}Crea una cuenta aqui
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -129,4 +162,3 @@ const Login = () => {
 };
 
 export default Login;
-

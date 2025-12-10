@@ -14,6 +14,7 @@ import Carrito from "./pages/Carrito.jsx";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RutasProtegidas from "./private/RutasProtegidas.jsx";
 
 function App() {
   return (
@@ -27,7 +28,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/detalle/:id" element={<ProductoDetalles />} />
         <Route path="/review" element={<Review />} />
-        <Route path="/carrito" element={<Carrito />} />
+        <Route element={<RutasProtegidas />}>
+          <Route path="/carrito" element={<Carrito />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error404 />} />
