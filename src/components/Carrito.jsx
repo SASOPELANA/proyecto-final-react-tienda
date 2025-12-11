@@ -1,9 +1,4 @@
-import {
-  FaShoppingCart,
-  FaTrash,
-  FaTimes,
-  FaCreditCard,
-} from "react-icons/fa";
+import { FaShoppingCart, FaTrash, FaTimes, FaCreditCard } from "react-icons/fa";
 
 const Carrito = ({ carrito = [], setCarrito }) => {
   const vaciarCarrito = () => {
@@ -64,14 +59,14 @@ const Carrito = ({ carrito = [], setCarrito }) => {
               <button
                 type="button"
                 onClick={vaciarCarrito}
-                className="w-full md:w-auto flex-grow text-white bg-red-500 hover:bg-red-600 font-semibold py-2 px-4 rounded-md transition flex items-center justify-center gap-2"
+                className="w-full md:w-auto text-white bg-red-500 hover:bg-red-600 font-semibold py-2 px-4 rounded-md transition flex items-center justify-center gap-2"
                 aria-label="Vaciar todo el carrito de compras"
               >
                 <FaTrash /> Vaciar Carrito
               </button>
               <button
                 type="button"
-                className="w-full md:w-auto flex-grow text-white bg-green-500 hover:bg-green-600 font-semibold py-2 px-4 rounded-md transition flex items-center justify-center gap-2"
+                className="w-full md:w-auto text-white bg-green-500 hover:bg-green-600 font-semibold py-2 px-4 rounded-md transition flex items-center justify-center gap-2"
                 aria-label="Proceder al pago"
               >
                 <FaCreditCard /> Pagar
@@ -85,4 +80,3 @@ const Carrito = ({ carrito = [], setCarrito }) => {
 };
 
 export default Carrito;
-

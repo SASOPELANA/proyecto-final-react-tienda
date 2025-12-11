@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // Login con API
+  // Logeo con mi apis rest
   const login = async (email, password) => {
     setLoading(true);
     setError(null);
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Logout
+  // Cerrar sesión
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);

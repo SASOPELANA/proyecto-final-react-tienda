@@ -75,7 +75,7 @@ const Formulario = () => {
           Enviar
         </button>
 
-        <input type="hidden" name="_next" value="localhost:5173" />
+        <input type="hidden" name="_next" value="https://proyecto-final-react-tienda.vercel.app/" />
         <input type="hidden" name="_captcha" value="false" />
       </form>
     </div>

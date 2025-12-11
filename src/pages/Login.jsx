@@ -55,7 +55,8 @@ const Login = () => {
                           className="text-sm font-medium text-gray-900 "
                           htmlFor="email"
                         >
-                          Correo Electronico:
+                          Correo Electronico:{" "}
+                          <span className="text-red-500">admin@admin.com</span>
                         </label>
                       </div>
                       <div className="flex w-full rounded-lg pt-1">
@@ -81,7 +82,8 @@ const Login = () => {
                           data-testid="flowbite-label"
                           htmlFor="password"
                         >
-                          Contraseña
+                          Contraseña{" "}
+                          <span className="text-red-500">123456</span>
                         </label>
                       </div>
                       <div className="flex w-full rounded-lg pt-1">
@@ -147,7 +149,8 @@ const Login = () => {
                         className="text-blue-500 underline hover:text-blue-600"
                         to="/register"
                       >
-                        {" "}Crea una cuenta aqui
+                        {" "}
+                        Crea una cuenta aqui
                       </Link>
                     </div>
                   </div>

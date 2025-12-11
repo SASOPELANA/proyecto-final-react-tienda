@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import api from "../api/api";
 import { toast } from "react-toastify";
 import Spinner from "../assets/icons/Spinner";
+import SnniperColor from '../assets/icons/SnniperColor';
 
 const AdminProductForm = () => {
   const { id } = useParams();
@@ -52,8 +53,8 @@ const AdminProductForm = () => {
     });
   };
 
-  const manejarEnvio = async (e) => {
-    e.preventDefault();
+  const manejarEnvio = async (envio) => {
+    envio.preventDefault();
     setCargando(true);
 
     const datosEnviar = {
@@ -73,8 +74,8 @@ const AdminProductForm = () => {
       navigate("/admin");
     } catch (error) {
       console.error(error);
-      const msg = error.response?.data?.message || "Error al guardar producto";
-      toast.error(msg);
+      const resError = error.response?.data?.message || "Error al guardar producto";
+      toast.error(resError);
     } finally {
       setCargando(false);
     }
@@ -159,7 +160,7 @@ const AdminProductForm = () => {
           disabled={cargando}
           className="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition disabled:bg-gray-400"
         >
-          {cargando ? "Guardando..." : esModoEdicion ? "Actualizar Producto" : "Crear Producto"}
+          {cargando ? <SnniperColor /> : esModoEdicion ? "Actualizar Producto" : "Crear Producto"}
         </button>
       </form>
     </section>
