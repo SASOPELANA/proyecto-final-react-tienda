@@ -83,7 +83,7 @@ pnpm run preview
 
 El proyecto consume mi propia API REST externa.
 
-- **Base URL:** `https://apis-rest-node-ts-firebase.vercel.app/api`
+- **Base URL:** `https://apis-rest-node-ts-firebase.vercel.app/`
 - **Documentación de API:** [apis-rest-node-ts-firebase](https://github.com/SASOPELANA/apis-rest-node-ts-firebase)
 
 ## Despliegue
