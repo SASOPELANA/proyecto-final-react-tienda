@@ -45,6 +45,11 @@ pnpm run preview
 - **React Router DOM**
 - **Axios**
 - **React Context API**
+- **React Toastify**
+- **Leaflet**
+- **React Icons**
+- **Tailwindcss-animated**
+- **Vercel**
 
 ## Características Principales
 
@@ -58,6 +63,7 @@ pnpm run preview
 
 - Login y Registro integrados con la API.
 - Persistencia de sesión mediante JWT en localStorage.
+- JWT en la Apis Rest para autenticación.
 - Rutas protegidas para usuarios autenticados.
 
 ### Productos
@@ -69,7 +75,7 @@ pnpm run preview
 
 ### Diseño
 
-- Interfaz completamente responsiva (Mobile First).
+- Interfaz completamente responsiva (Mobile - Desktop - Tablet ).
 - Notificaciones de estado (Toast).
 - Feedback visual de carga.
 
