@@ -79,14 +79,14 @@ const Carrito = () => {
                 <button
                   type="button"
                   onClick={clearCart}
-                  className="w-full md:w-auto flex-grow text-white bg-red-500 hover:bg-red-600 font-semibold py-2 px-4 rounded-md transition flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full md:w-auto grow text-white bg-red-500 hover:bg-red-600 font-semibold py-2 px-4 rounded-md transition flex items-center justify-center gap-2 cursor-pointer"
                   aria-label="Vaciar todo el carrito de compras"
                 >
                   <FaTrash /> Vaciar Carrito
                 </button>
                 <button
                   type="button"
-                  className="w-full md:w-auto flex-grow text-white bg-green-500 hover:bg-green-600 font-semibold py-2 px-4 rounded-md transition flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full md:w-auto grow text-white bg-green-500 hover:bg-green-600 font-semibold py-2 px-4 rounded-md transition flex items-center justify-center gap-2 cursor-pointer"
                   aria-label="Proceder al pago"
                 >
                   <FaCreditCard /> Pagar

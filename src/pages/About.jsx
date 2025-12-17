@@ -13,11 +13,7 @@ const About = () => {
         />
       </Helmet>
       <div className="mx-2 ">
-        <div
-          className="max-w-3xl mx-auto mt-16 md:px-8 p-6 my-16 bg-white rounded-xl shadow-md sm:p-8 md:p-12
-    border-4 border-indigo-200 animate-jump-in animate-once animate-duration-1000 animate-delay-100
-    "
-        >
+        <div className="max-w-3xl mx-auto mt-16 md:px-8 p-6 my-16 bg-white rounded-xl shadow-md sm:p-8 md:p-12 border-4 border-indigo-200">
           <h1 className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-800 text-center sm:text-left">
             Sobre Nosotros
           </h1>
@@ -50,4 +46,3 @@ const About = () => {
 };
 
 export default About;
-

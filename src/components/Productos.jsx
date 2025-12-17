@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { useSearch } from "../context/SearchContext.jsx";
 import { useCart } from "../context/CartContext.jsx";
 import Spinner from "../assets/icons/Spinner.jsx";
-import { FaCartPlus, FaInfoCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {
+  FaCartPlus,
+  FaInfoCircle,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const Productos = () => {
   const { filteredProducts, loadingFilter, errorFilter } = useSearch();
@@ -18,12 +23,11 @@ const Productos = () => {
     setPaginaActual(1);
   }, [filteredProducts]);
 
-  
   const indiceUltimoProducto = paginaActual * productosPorPagina;
   const indicePrimerProducto = indiceUltimoProducto - productosPorPagina;
   const productosActuales = filteredProducts.slice(
     indicePrimerProducto,
-    indiceUltimoProducto
+    indiceUltimoProducto,
   );
   const totalPaginas = Math.ceil(filteredProducts.length / productosPorPagina);
 
@@ -76,7 +80,7 @@ const Productos = () => {
             <img
               src={producto.image}
               alt={producto.name}
-              className="w-full h-64 object-contain p-4 animate-flip-down animate-once animate-duration-[3000ms] animate-delay-500"
+              className="w-full h-64 object-contain p-4"
             />
             <div className="p-4 flex flex-col flex-grow justify-between text-center">
               <h3 className="font-bold text-lg text-gray-800">
@@ -138,20 +142,22 @@ const Productos = () => {
 
           {/* Números de página */}
           <div className="flex flex-wrap justify-center gap-1">
-            {Array.from({ length: totalPaginas }, (_, i) => i + 1).map((numero) => (
-              <button
-                key={numero}
-                onClick={() => manejarClickPagina(numero)}
-                className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${
-                  paginaActual === numero
-                    ? "bg-blue-600 text-white font-bold"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                }`}
-                aria-label={`Ir a página ${numero}`}
-              >
-                {numero}
-              </button>
-            ))}
+            {Array.from({ length: totalPaginas }, (_, i) => i + 1).map(
+              (numero) => (
+                <button
+                  key={numero}
+                  onClick={() => manejarClickPagina(numero)}
+                  className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${
+                    paginaActual === numero
+                      ? "bg-blue-600 text-white font-bold"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                  aria-label={`Ir a página ${numero}`}
+                >
+                  {numero}
+                </button>
+              ),
+            )}
           </div>
 
           <button
@@ -173,4 +179,3 @@ const Productos = () => {
 };
 
 export default Productos;
-

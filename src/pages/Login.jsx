@@ -56,7 +56,6 @@ const Login = () => {
                           htmlFor="email"
                         >
                           Correo Electronico:{" "}
-                          <span className="text-red-500">admin@admin.com</span>
                         </label>
                       </div>
                       <div className="flex w-full rounded-lg pt-1">
@@ -83,7 +82,6 @@ const Login = () => {
                           htmlFor="password"
                         >
                           Contraseña{" "}
-                          <span className="text-red-500">123456</span>
                         </label>
                       </div>
                       <div className="flex w-full rounded-lg pt-1">

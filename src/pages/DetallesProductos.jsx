@@ -36,11 +36,7 @@ const DetallesProductos = () => {
         <meta name="description" content={producto.description} />
       </Helmet>
       <section className="max-w-2xl mx-auto px-4 py-10">
-        <div
-          className="bg-white rounded-xl shadow-lg flex flex-col items-center p-8
-       border-4 border-gray-500/50
-      "
-        >
+        <div className="bg-white rounded-xl shadow-lg flex flex-col items-center p-8 border-4 border-gray-500/50">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
             Detalles del producto # {<NumeroProducto id={producto.id} />}
           </h1>

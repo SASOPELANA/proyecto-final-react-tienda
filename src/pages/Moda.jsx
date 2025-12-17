@@ -55,7 +55,7 @@ const Moda = () => {
           content="Descubre nuestra selección de productos para gamers. CPUs, accesorios y más."
         />
       </Helmet>
-      <section className="max-w-6xl mx-auto px-4 py-10 animate-flip-up animate-duration-1000 animate-delay-500 animate-ease-out  ">
+      <section className="max-w-6xl mx-auto px-4 py-10">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center text-gray-800">
           Productos - Gamers
         </h1>
@@ -69,9 +69,9 @@ const Moda = () => {
               <img
                 src={producto.image}
                 alt={producto.name}
-                className="w-full h-64 object-contain p-4 animate-flip-down animate-once animate-duration-[3000ms] animate-delay-500"
+                className="w-full h-64 object-contain p-4"
               />
-              <div className="p-4 flex flex-col flex-grow justify-between text-center">
+              <div className="p-4 flex flex-col grow justify-between text-center">
                 <h2 className="text-lg font-semibold text-gray-700 mb-2 line-clamp-2">
                   {producto.name}
                 </h2>
