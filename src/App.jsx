@@ -17,10 +17,11 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RutasProtegidas from "./private/RutasProtegidas.jsx";
+import RutaAdmin from "./private/RutaAdmin.jsx";
 
 function App() {
   return (
-    <main className="font-montserrat pt-[64px] animate-pulse animate-once animate-duration-[1000ms] animate-delay-500">
+    <main className="font-montserrat pt-[64px] animate-pulse animate-once animate-duration-1000 animate-delay-500">
       <Header />
       <Routes>
         <Route path="/mapa" element={<Mapa />} />
@@ -32,6 +33,8 @@ function App() {
         <Route path="/review" element={<Review />} />
         <Route element={<RutasProtegidas />}>
           <Route path="/carrito" element={<Carrito />} />
+        </Route>
+        <Route element={<RutaAdmin />}>
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/new" element={<AdminProductForm />} />
           <Route path="/admin/edit/:id" element={<AdminProductForm />} />

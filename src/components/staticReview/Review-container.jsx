@@ -41,14 +41,14 @@ const reviews = [
 
 export const ReviewContainer = () => {
   const positionClases = [
-    "xl:place-self-start",
-    "xl:place-self-center",
-    "xl:place-self-end-safe xl:m-2.5",
-    "xl:place-self-end",
+    "lg:place-self-start",
+    "lg:place-self-center",
+    "lg:place-self-end-safe lg:m-2.5",
+    "lg:place-self-end",
   ];
 
   return (
-    <div className="flex flex-col gap-4 xl:flex-row xl:h-[285px] xl:gap-[30px]">
+    <div className="flex flex-col gap-4 lg:flex-row lg:min-h-[285px] lg:items-stretch lg:gap-4 xl:gap-[30px] lg:mt-10">
       {reviews.map(({ id, name, buyerType, review, imgUrl }, index) => {
         return (
           <ReviewCard

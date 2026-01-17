@@ -8,6 +8,24 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  // Función para decodificar el JWT (base64)
+  const decodeToken = (token) => {
+    try {
+      const base64Url = token.split(".")[1];
+      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+      const jsonPayload = decodeURIComponent(
+        window.atob(base64)
+          .split("")
+          .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+          .join("")
+      );
+      return JSON.parse(jsonPayload);
+    } catch (err) {
+      console.error("Error al decodificar el token:", err);
+      return null;
+    }
+  };
 
   // Restaurar usuario desde localStorage
   useEffect(() => {
@@ -15,9 +33,13 @@ export const AuthProvider = ({ children }) => {
       const storedUser = localStorage.getItem("user");
       if (storedUser) {
         const parsed = JSON.parse(storedUser);
-        setUser(parsed);
         if (parsed.token) {
           api.defaults.headers.common["Authorization"] = `Bearer ${parsed.token}`;
+          // Asegurarnos de que tenemos los datos decodificados
+          const decoded = decodeToken(parsed.token);
+          setUser({ ...parsed, ...decoded });
+        } else {
+          setUser(parsed);
         }
       }
     } catch (err) {
@@ -34,11 +56,13 @@ export const AuthProvider = ({ children }) => {
     setError(null);
     try {
       const res = await api.post("/auth/login", { email, password });
-      const userData = res.data; // suponiendo {user, token}
-      localStorage.setItem("user", JSON.stringify(userData));
+      const userData = res.data; // {token: "..."}
+      const decoded = decodeToken(userData.token);
+      const fullUserData = { ...userData, ...decoded };
+      
+      localStorage.setItem("user", JSON.stringify(fullUserData));
       api.defaults.headers.common["Authorization"] = `Bearer ${userData.token}`;
-      //console.log(userData);
-      setUser(userData);
+      setUser(fullUserData);
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || "Error en login");

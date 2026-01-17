@@ -8,13 +8,13 @@ const ratings = [
 
 export const RatingContainer = () => {
   const positionClases = [
-    "xl:place-self-start",
-    "xl:place-self-center",
-    "xl:place-self-end",
+    "lg:place-self-start",
+    "lg:place-self-center",
+    "lg:place-self-end",
   ];
 
   return (
-    <section className="flex flex-col gap-4 xl:w-[540px] xl:justify-center">
+    <section className="flex flex-col gap-4 lg:w-[480px] xl:w-[540px] lg:justify-center">
       {ratings.map((rating, index) => {
         return (
           <RatingCard
